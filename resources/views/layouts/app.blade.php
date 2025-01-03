@@ -55,9 +55,7 @@
     padding: 10px; /* Memberikan jarak antar kolom */
 }
 
-.portfolio-content img {
-    border-radius: 10px; /* Membuat sudut gambar melengkung */
-}
+
 
 @media (max-width: 576px) {
     .portfolio-item {

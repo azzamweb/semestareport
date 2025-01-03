@@ -12,10 +12,10 @@ class HomeController extends Controller
     public function index()
     {
         // Ambil berita terbaru (misalnya dari tabel berita)
-        $latestNews = DB::table('news')->latest()->take(5)->get();
+        $latestNews = DB::table('news')->latest()->take(4)->get();
 
         // Ambil 5 laporan terbaru
-        $latestReports = Report::latest()->take(5)->get();
+        $latestReports = Report::latest()->take(6)->get();
 
         // Ambil 5 user teraktif dalam minggu ini
         $startOfWeek = Carbon::now()->startOfWeek();
