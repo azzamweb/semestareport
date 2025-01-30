@@ -3,6 +3,10 @@
 @section('title', 'Peta Sampah')
 
 @section('content')
+
+<div class="spacer">
+    
+</div>
 <div class="container">
     <h2 class="text-center text-tosca-dark mb-4">Peta Sampah</h2>
 
@@ -12,38 +16,35 @@
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script> -->
 
-<script>
-    // Data laporan dari server
-    var reports = @json($reports);
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script>
+        // Inisialisasi Peta
 
-    // Ambil lokasi terakhir sebagai pusat peta atau gunakan default
-    var lastReport = reports.length > 0 ? reports[reports.length - 1] : null;
-    var map = L.map('map').setView(
-        lastReport ? [lastReport.latitude, lastReport.longitude] : [-6.2088, 106.8456],
-        13
-    );
+        //1.4918150765026617, 102.16438994817425
+        //1.281267175270766, 101.94811706359255
+        var map = L.map('map').setView([1.4918150765026617, 102.16438994817425], 10); // Lokasi awal: Bengkalis
 
-    // Tambahkan Tile Layer dari OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    }).addTo(map);
+        // Tambahkan Layer Satelit dari Esri
+        L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, USGS, NOAA',
+            maxZoom: 19
+        }).addTo(map);
 
-    // Tambahkan Marker untuk Setiap Laporan
-    reports.forEach(function(report) {
-        if (report.latitude && report.longitude) {
-            L.marker([report.latitude, report.longitude])
-                .addTo(map)
-                .bindPopup(`
-                    <b>${report.description}</b><br>
-                    Latitude: ${report.latitude}<br>
-                    Longitude: ${report.longitude}<br>
-                    <a href="/reports/${report.id}" >Lihat Detail Laporan</a>
+        // Marker untuk Lokasi Sampah
+        var reports = @json($reports); // Data laporan dari Controller
+        reports.forEach(function(report) {
+            if (report.latitude && report.longitude) {
+                var marker = L.marker([report.latitude, report.longitude]).addTo(map);
+                marker.bindPopup(`
+                    <b>${report.user.name}</b><br>
+                    ${report.description}<br>
+                    <a href="{{ url('/reports') }}/${report.id}" target="_blank">Lihat Detail</a>
                 `);
-        }
-    });
-</script>
+            }
+        });
+    </script>
 
 <style>
     #map {

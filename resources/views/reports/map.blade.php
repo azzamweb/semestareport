@@ -3,6 +3,10 @@
 @section('title', 'Peta Laporan Sampah')
 
 @section('content')
+
+<div class="spacer">
+    
+</div>
 <div class="container">
     <h2 class="text-center text-tosca-dark mb-4">Peta Laporan Sampah Liar</h2>
 

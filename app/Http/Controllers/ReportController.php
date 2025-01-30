@@ -20,14 +20,9 @@ class ReportController extends Controller
     }
     public function petaSampah()
 {
-    // Ambil semua laporan dengan koordinat yang valid
-    $reports = Report::whereNotNull('latitude')
-                     ->whereNotNull('longitude')
-                     ->get();
-
+    $reports = Report::with('user')->whereNotNull('latitude')->whereNotNull('longitude')->get();
     return view('reports.peta-sampah', compact('reports'));
 }
-
 public function index()
 {
     // Ambil semua laporan beserta data user
