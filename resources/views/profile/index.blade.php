@@ -11,9 +11,7 @@
         <div class="col-lg-4">
             <div class="card shadow-lg border-0 rounded-10">
                 <div class="card-body text-center">
-                    <img src="https://ui-avatars.com/api/?name={{ urlencode($user->name ?? 'User') }}&background=random"
-                        class="rounded-circle mb-3 border border-3 border-primary shadow-sm" width="120" height="120"
-                        alt="Avatar">
+                    <img src="{{ asset('storage/' . $user->photo ?? 'default-profile.png') }}">
                     <h4 class="fw-bold">{{ $user->name ?? 'Tidak diketahui' }}</h4>
                     <p class="text-muted">{{ $user->email ?? 'Email tidak tersedia' }}
                     </p>
@@ -90,16 +88,6 @@
                     @else
                         <p class="text-center text-muted">Anda belum mengunggah laporan.</p>
                     @endif
-
-
-
-
-
-
-
-
-
-
                 </div>
             </div>
         </div>
