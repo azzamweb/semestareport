@@ -15,6 +15,24 @@ use App\Models\Report; // Impor model Report
 
 class ProfileController extends Controller
 {
+
+    public function index()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(403, 'User tidak ditemukan atau belum login.');
+        }
+
+        $reports = Report::where('user_id', $user->id)
+                         ->whereNotNull('latitude')
+                         ->whereNotNull('longitude')
+                         ->with('user') // Pastikan relasi user dimuat agar bisa diakses di view
+                         ->get();
+
+        return view('profile.index', compact('user', 'reports'));
+    }
+    
     public function edit()
     {
         $user = auth()->user();

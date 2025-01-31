@@ -2,10 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Report extends Model
 {
+    use HasFactory;
 
     protected $fillable = [
         'user_id',
@@ -15,38 +18,12 @@ class Report extends Model
         'longitude',
         'status',
     ];
-    public function store(Request $request)
-{
-    $request->validate([
-        'photo' => 'required|image',
-        'description' => 'required',
-        'latitude' => 'required|numeric',
-        'longitude' => 'required|numeric',
-    ]);
 
-    $path = $request->file('photo')->store('public/reports');
-
-    Report::create([
-        'user_id' => auth()->id(),
-        'photo' => $path,
-        'description' => $request->description,
-        'latitude' => $request->latitude,
-        'longitude' => $request->longitude,
-    ]);
-
-    return redirect()->route('reports.index')->with('success', 'Laporan berhasil dikirim.');
+    /**
+     * Relasi ke User
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
 }
-
-public function index()
-{
-    $reports = Report::where('status', '!=', 'selesai')->latest()->get();
-    return view('reports.index', compact('reports'));
-}
-
-public function user()
-{
-    return $this->belongsTo(User::class);
-}
-
-}
-
