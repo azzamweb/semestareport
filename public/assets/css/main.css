@@ -1535,3 +1535,63 @@ section,
       max-width: 50%;
   }
 }
+
+
+.dataTable {
+  border-radius: 12px;
+  overflow: hidden;
+  width: 100%;
+}
+
+/* Header styling */
+.dataTable thead {
+  background-color: #2CD06E;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Row hover effect */
+.dataTable tbody tr:hover {
+  background-color: rgba(64, 224, 208, 0.1);
+}
+
+/* Responsive padding for mobile */
+@media (max-width: 768px) {
+  .dataTable tbody td {
+      font-size: 13px;
+  }
+  .dataTable thead th {
+      font-size: 14px;
+  }
+  .btn-sm {
+      font-size: 12px;
+      padding: 6px 12px;
+  }
+}
+
+  /* Styling Pagination */
+  .dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 5px 10px !important;
+    margin: 0 2px !important;
+    border-radius: 8px !important;
+    border: 1px solid #2CD06E !important;
+    background-color: white !important;
+    color: #2CD06E !important;
+    transition: 0.3s ease;
+  }
+  
+  .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+    background-color: #2CD06E !important;
+    color: white !important;
+  }
+  
+  .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background-color: #2CD06E !important;
+    color: white !important;
+  }
+  
+  .dataTables_wrapper .dataTables_paginate .paginate_button.disabled {
+    background-color: #f8f9fa !important;
+    color: #aaa !important;
+  }

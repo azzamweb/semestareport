@@ -17,6 +17,14 @@
     <link rel="stylesheet" href="{{ asset('assets2/css/glightbox.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets2/css/main.css') }}" />
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+
+
 </head>
 
 <body>
@@ -67,12 +75,15 @@
         <i class="lni lni-chevron-up"></i>
     </a>
 
-    
     <script src="{{ asset('assets2/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets2/js/wow.min.js') }}"></script>
    
     <script src="{{ asset('assets2/js/main.js') }}"></script>
+   
+    
+   
 
+    
 </body>
 
 </html>
