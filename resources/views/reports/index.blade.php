@@ -12,7 +12,9 @@
         @if($reports->isEmpty())
             <p class="text-center text-muted">Tidak ada laporan untuk ditampilkan.</p>
         @else
-            <table id="reportTable" class="table table-hover align-middle dataTable">
+
+        <div class="table-responsive">
+            <table id="reportTable" class="table table-hover align-middle table-striped table-bordered">
                 <thead class="bg-tosca text-white">
                     <tr>
                         <th class="text-center">#</th>
@@ -48,6 +50,7 @@
                     @endforeach
                 </tbody>
             </table>
+</div>
         @endif
     </div>
 </div>
@@ -123,40 +126,27 @@
 </style>
 
 <!-- DataTables Scripts -->
-@push('styles')
+
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/rowreorder/1.4.1/css/rowReorder.dataTables.min.css">
-@endpush
 
-@push('scripts')
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/rowreorder/1.4.1/js/dataTables.rowReorder.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('#reportTable').DataTable({
-                responsive: true,
-                rowReorder: {
-                    selector: 'td:first-child'
-                },
-                autoWidth: false,
-                scrollX: true,
-                language: {
-                    search: "Cari:",
-                    lengthMenu: "Tampilkan _MENU_ data",
-                    info: "Menampilkan _START_ sampai _END_ dari _TOTAL_ data",
-                    paginate: {
-                        first: "Awal",
-                        last: "Akhir",
-                        next: "Berikutnya",
-                        previous: "Sebelumnya"
-                    }
-                }
-            });
+
+<script>
+    $(document).ready(function () {
+        $('#reportTable').DataTable({
+            responsive: true,
+            autoWidth: false,
+            paging: false, // Nonaktifkan pagination
+            searching: true, // Tetap aktifkan fitur pencarian
+            info: false, // Nonaktifkan informasi jumlah data
+            ordering: true, // Tetap bisa mengurutkan data
+            language: {
+                search: "🔍 Cari:",
+                lengthMenu: "Tampilkan _MENU_ data",
+            }
         });
-    </script>
-@endpush
+    });
+</script>
 
 @endsection
