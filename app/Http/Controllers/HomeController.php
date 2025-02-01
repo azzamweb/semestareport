@@ -25,7 +25,7 @@ class HomeController extends Controller
             $query->whereBetween('created_at', [$startOfWeek, $endOfWeek]);
         }])
         ->orderBy('reports_count', 'desc')
-        ->take(5)
+        ->take(8)
         ->get();
 
         $reports = Report::whereNotNull('latitude')

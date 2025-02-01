@@ -34,9 +34,9 @@
 <!-- Start tabel laporan -->
 <section class="freatures section">
     <div class="container">
-    <div class="section-title">
-    <h2 class="wow fadeInUp" data-wow-delay=".4s">Daftar Laporan</h2>
-</div>
+        <div class="section-title">
+            <h2 class="wow fadeInUp" data-wow-delay=".4s">Daftar Laporan</h2>
+        </div>
         <div class="table-responsive shadow-sm rounded">
             @if($reports->isEmpty())
                 <p class="text-center text-muted">Tidak ada laporan untuk ditampilkan.</p>
@@ -181,24 +181,24 @@
 
 <!-- Start Intro Video Area -->
 <section class="intro-video-area section">
-<div class="section-title">
-    <h2 class="wow fadeInUp" data-wow-delay=".4s">Peta sebaran laporan</h2>
-</div>
+    <div class="section-title">
+        <h2 class="wow fadeInUp" data-wow-delay=".4s">Peta sebaran laporan</h2>
+    </div>
     <div class="container">
-        
-    
-            <div class="col-12">
-           
-                <div class="inner-content-head">
-                    <div class="inner-content">
-                       
-                        <div id="map" style="height: 500px; border: 1px solid #ccc;"></div>
 
 
-                    </div>
+        <div class="col-12">
+
+            <div class="inner-content-head">
+                <div class="inner-content">
+
+                    <div id="map" style="height: 500px; border: 1px solid #ccc;"></div>
+
+
                 </div>
             </div>
-       
+        </div>
+
     </div>
 </section>
 <!-- End Intro Video Area -->
@@ -211,91 +211,46 @@
                 <div class="section-title">
                     <h3 class="wow zoomIn" data-wow-delay=".2s">Environmental Heroes</h3>
                     <h2 class="wow fadeInUp" data-wow-delay=".4s">active contributor this week</h2>
-                    <p class="wow fadeInUp" data-wow-delay=".6s">Setiap tindakan kecil membawa perubahan besar! 👏 Inilah para kontributor paling aktif minggu ini yang telah berperan dalam menjaga lingkungan dengan melaporkan sampah liar, pencemaran, dan masalah lingkungan lainnya.</p>
+                    <p class="wow fadeInUp" data-wow-delay=".6s">Setiap tindakan kecil membawa perubahan besar! 👏
+                        Inilah para kontributor paling aktif minggu ini yang telah berperan dalam menjaga lingkungan
+                        dengan melaporkan sampah liar, pencemaran, dan masalah lingkungan lainnya.</p>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay=".3s">
-                <!-- Start Single Team -->
-                <div class="single-team">
-                    <div class="team-image">
-                        <img src="{{ asset('assets/img/team/team-1.jpg') }}" alt="#">
+
+            @foreach($topUsers as $topUser)
+
+                <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay=".3s">
+                    <!-- Start Single Team -->
+                    <div class="single-team">
+                        <div class="team-image">
+
+                            @if(!empty($topUser->profile_picture))
+                                <img src="{{ $topUser->profile_picture }}">
+                            @else
+                                <img src="{{ asset('assets/images/profile-pic.jpg') }}">
+                            @endif
+                            <!-- <img src="{{ $topUser->profile_picture }} ? asset('storage/' . $topUser->profile_picture : asset('/images/profile-pic.jpg') }}"
+                                alt="{{ $topUser->name }}"> -->
+                        </div>
+                        <div class="content">
+                            <h4><a
+                                    href="{{ route('users.show', $topUser->id) }}">{{ $topUser->name }}</a>
+                
+                            </h4>
+                            <ul class="social">
+                                <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
+                                <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
-                    <div class="content">
-                        <h4>Deco Milan
-                            <span>Founder</span>
-                        </h4>
-                        <ul class="social">
-                            <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                        </ul>
-                    </div>
+                    <!-- End Single Team -->
                 </div>
-                <!-- End Single Team -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay=".5s">
-                <!-- Start Single Team -->
-                <div class="single-team">
-                    <div class="team-image">
-                        <img src="{{ asset('assets/img/team/team-2.jpg') }}" alt="#">
-                    </div>
-                    <div class="content">
-                        <h4>Liza Marko
-                            <span>Developer</span>
-                        </h4>
-                        <ul class="social">
-                            <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Single Team -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay=".7s">
-                <!-- Start Single Team -->
-                <div class="single-team">
-                    <div class="team-image">
-                        <img src="{{ asset('assets/img/team/team-3.jpg') }}" alt="#">
-                    </div>
-                    <div class="content">
-                        <h4>John Smith
-                            <span>Designer</span>
-                        </h4>
-                        <ul class="social">
-                            <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Single Team -->
-            </div>
-            <div class="col-lg-3 col-md-6 col-12 wow fadeInUp" data-wow-delay=".9s">
-                <!-- Start Single Team -->
-                <div class="single-team">
-                    <div class="team-image">
-                        <img src="{{ asset('assets/img/team/team-4.jpg') }}" alt="#">
-                    </div>
-                    <div class="content">
-                        <h4>Amion Doe
-                            <span>Co-Founder</span>
-                        </h4>
-                        <ul class="social">
-                            <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                            <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!-- End Single Team -->
-            </div>
+            @endforeach
+
         </div>
     </div>
 </section>
@@ -687,7 +642,7 @@
             autoWidth: false,
             paging: true, // Nonaktifkan pagination
             pageLength: 5,
-            bLengthChange : false,
+            bLengthChange: false,
             searching: true, // Tetap aktifkan fitur pencarian
             info: true, // Nonaktifkan informasi jumlah data
             ordering: true, // Tetap bisa mengurutkan data
@@ -707,48 +662,46 @@
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-    var map = L.map('map', {
-        gestureHandling: true // Mengaktifkan gesture handling
-    }).setView([-6.2088, 106.8456], 12); // Default ke Jakarta
+        var map = L.map('map', {
+            gestureHandling: true // Mengaktifkan gesture handling
+        }).setView([-6.2088, 106.8456], 12); // Default ke Jakarta
 
-    // Tambahkan tile layer dari OpenStreetMap
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+        // Tambahkan tile layer dari OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
 
-    // Ambil data laporan dari Controller
-    var reports = @json($reports);
-    var markers = L.featureGroup(); // Grup marker untuk auto-zoom
+        // Ambil data laporan dari Controller
+        var reports = @json($reports);
+        var markers = L.featureGroup(); // Grup marker untuk auto-zoom
 
-    // Tambahkan marker untuk setiap laporan
-    reports.forEach(function (report) {
-        if (report.latitude && report.longitude) {
-            var lat = parseFloat(report.latitude);
-            var lng = parseFloat(report.longitude);
+        // Tambahkan marker untuk setiap laporan
+        reports.forEach(function (report) {
+            if (report.latitude && report.longitude) {
+                var lat = parseFloat(report.latitude);
+                var lng = parseFloat(report.longitude);
 
-            if (!isNaN(lat) && !isNaN(lng)) {
-                var marker = L.marker([lat, lng]).addTo(map)
-                    .bindPopup(`
+                if (!isNaN(lat) && !isNaN(lng)) {
+                    var marker = L.marker([lat, lng]).addTo(map)
+                        .bindPopup(`
                         <b>${report.description}</b><br>
                         Latitude: ${lat}<br>
                         Longitude: ${lng}<br>
                         <a href="https://www.google.com/maps?q=${lat},${lng}" target="_blank">Lihat di Google Maps</a>
                     `);
-                markers.addLayer(marker); // Tambahkan marker ke dalam grup
+                    markers.addLayer(marker); // Tambahkan marker ke dalam grup
+                }
             }
+        });
+
+        // Jika ada laporan, atur zoom agar peta menyesuaikan seluruh marker
+        if (markers.getLayers().length > 0) {
+            map.fitBounds(markers.getBounds(), {
+                padding: [50, 50], // Beri padding agar marker tidak terlalu mepet tepi
+                maxZoom: 15 // Batasi zoom maksimum agar tidak terlalu dekat
+            });
         }
     });
-
-    // Jika ada laporan, atur zoom agar peta menyesuaikan seluruh marker
-    if (markers.getLayers().length > 0) {
-        map.fitBounds(markers.getBounds(), {
-            padding: [50, 50], // Beri padding agar marker tidak terlalu mepet tepi
-            maxZoom: 15 // Batasi zoom maksimum agar tidak terlalu dekat
-        });
-    }
-});
-
-
 
 </script>
 

@@ -19,12 +19,12 @@
                             <li class="nav-item">
                                 <a href="{{ route('index') }}" class="nav-link {{ request()->routeIs('index') ? 'active' : '' }}">Home</a>
                             </li>
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a href="{{ route('reports.index') }}" class="nav-link {{ request()->routeIs('reports.index') ? 'active' : '' }}">Laporan</a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{ route('peta.sampah') }}" class="nav-link {{ request()->routeIs('peta.sampah') ? 'active' : '' }}">Peta Sampah</a>
-                            </li>
+                            </li> -->
                             @auth
                                 <!-- <li class="nav-item">
                                     <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
