@@ -28,6 +28,12 @@ class HomeController extends Controller
         ->take(5)
         ->get();
 
-        return view('index', compact('latestNews', 'latestReports', 'topUsers'));
+        $reports = Report::whereNotNull('latitude')
+        ->whereNotNull('longitude')
+        ->get();
+        
+                         
+
+        return view('index', compact('latestNews', 'latestReports', 'topUsers', 'reports'));
     }
 }

@@ -11,7 +11,7 @@ class ReportController extends Controller
     public function map()
     {
         // Ambil semua laporan dengan koordinat
-        Log::info('Metode map dipanggil');
+        // Log::info('Metode map dipanggil');
         $reports = Report::whereNotNull('latitude')
                          ->whereNotNull('longitude')
                          ->get();
