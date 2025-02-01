@@ -649,6 +649,8 @@
 
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css">
+
 <!-- Leaflet JS -->
 
 
@@ -700,10 +702,14 @@
 </script>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.js"></script>
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-    var map = L.map('map').setView([-6.2088, 106.8456], 12); // Default ke Jakarta
+    var map = L.map('map', {
+        gestureHandling: true // Mengaktifkan gesture handling
+    }).setView([-6.2088, 106.8456], 12); // Default ke Jakarta
 
     // Tambahkan tile layer dari OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -741,6 +747,7 @@
         });
     }
 });
+
 
 
 </script>
