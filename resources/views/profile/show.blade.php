@@ -16,7 +16,7 @@
                     <h5>Profil Pengguna</h5>
                 </div>
                 <div class="card-body text-center">
-                    <img src="{{ $user->profile_picture ? asset('storage/' . $user->profile_picture) : 'https://via.placeholder.com/150' }}" alt="Foto Profil" class="img-thumbnail mb-3" style="width: 150px; height: 150px; object-fit: cover;">
+                    <img src="{{ $user->profile_picture ? asset($user->profile_picture) : 'https://via.placeholder.com/150' }}" alt="Foto Profil" class="img-thumbnail mb-3" style="width: 150px; height: 150px; object-fit: cover;">
                     <h4>{{ $user->name }}</h4>
                     <p><strong>Email:</strong> {{ $user->email }}</p>
                 </div>
