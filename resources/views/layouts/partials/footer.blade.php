@@ -11,15 +11,12 @@
                                         <img src="{{ asset('assets/img/semestalogo.png') }}" alt="#">
                                     </a>
                                 </div>
-                                <p>Making the world a better place through constructing elegant hierarchies.</p>
+                                <p>Making the world a better place</p>
                                 <h4 class="social-title">Follow Us On:</h4>
                                 <ul class="social">
-                                    <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-pinterest"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-youtube"></i></a></li>
+                                    <li><a href="https://www.facebook.com/semesta.org/"><i class="lni lni-facebook-filled"></i></a></li>
+                                    <li><a href="https://www.instagram.com/semesta_org/"><i class="lni lni-instagram"></i></a></li>
+                                    <li><a href="https://www.youtube.com/@sentralmudabestari8601"><i class="lni lni-youtube"></i></a></li>
                                 </ul>
                             </div>
                             <!-- End Single Widget -->
@@ -27,29 +24,15 @@
                         <div class="col-lg-2 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer f-link">
-                                <h3>Solutions</h3>
+                                <h3>Links</h3>
                                 <ul>
-                                    <li><a href="javascript:void(0)">Marketing</a></li>
-                                    <li><a href="javascript:void(0)">Analytics</a></li>
-                                    <li><a href="javascript:void(0)">Commerce</a></li>
-                                    <li><a href="javascript:void(0)">Insights</a></li>
+                                    <li><a href="https://semesta.org">Semesta.org</a></li>
+                                   
                                 </ul>
                             </div>
                             <!-- End Single Widget -->
                         </div>
-                        <div class="col-lg-2 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-link">
-                                <h3>Support</h3>
-                                <ul>
-                                    <li><a href="javascript:void(0)">Pricing</a></li>
-                                    <li><a href="javascript:void(0)">Documentation</a></li>
-                                    <li><a href="javascript:void(0)">Guides</a></li>
-                                    <li><a href="javascript:void(0)">API Status</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
+                        
                         <div class="col-lg-4 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer newsletter">
