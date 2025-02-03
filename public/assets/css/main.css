@@ -5115,3 +5115,12 @@ blockquote span {
 }
 
 
+.reportavatar {
+  display: flex
+;
+  flex-direction: column;
+  align-items: center;
+}
+.reportavatar img {
+  max-width: 50px;
+}

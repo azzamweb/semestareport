@@ -73,7 +73,12 @@ class ProfileController extends Controller
     public function show($id)
 {
     $user = \App\Models\User::findOrFail($id); // Ambil data pengguna berdasarkan ID
-    $reports = \App\Models\Report::where('user_id', $id)->latest()->get(); // Ambil laporan pengguna
+    // $reports = \App\Models\Report::where('user_id', $id)->latest()->get(); // Ambil laporan pengguna
+    $reports = Report::where('user_id', $user->id)
+                         ->whereNotNull('latitude')
+                         ->whereNotNull('longitude')
+                         ->with('user') // Pastikan relasi user dimuat agar bisa diakses di view
+                         ->get();
 
     return view('profile.show', [
         'user' => $user,

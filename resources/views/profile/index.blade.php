@@ -25,13 +25,13 @@
         <div class="col-lg-8">
             <div class="card shadow-lg border-0 rounded-lg">
                 <div class="card-body">
-                    <h3 class="fw-bold text-center mb-4 text-primary">Laporan Saya</h3>
+                    <h3 class="fw-bold text-center mb-4 text-primary">Laporan Terbaru</h3>
 
                     @if(isset($reports) && count($reports) > 0)
                         <div class="table-responsive">
                             <table id="profileReportTable"
                                 class="table table-hover align-middle table-striped table-bordered">
-                                <thead class="table-primary text-dark">
+                                <thead class="bg-tosca text-white">
                                     <tr>
                                         <th class="text-center">#</th>
                                         <th>Deskripsi</th>
@@ -69,7 +69,7 @@
                                             </td>
                                             <td>
                                                 <span class="badge bg-primary text-white px-3 py-2">
-                                                    {{ ucfirst($report->status ?? 'pending') }}
+                                                {{ ucfirst($report->status) }}
                                                 </span>
                                             </td>
                                             <td>{{ $report->created_at ? $report->created_at->format('d M Y') : '-' }}
@@ -102,7 +102,7 @@
 
 
 
-            <h5 class="fw-bold mb-3"><i class="fas fa-map-marked-alt"></i> Peta Sebaran Laporan Saya</h5>
+            <h5 class="fw-bold mb-3"><i class="fas fa-map-marked-alt"></i> Peta Sebaran Laporan</h5>
             <div id="map" style="height: 400px; border-radius: 10px;"></div>
 
 
@@ -110,6 +110,81 @@
     </div>
 </div>
 <div class="spacer"></div>
+
+<style>
+    /* Warna utama */
+    .bg-tosca {
+        background-color: #2CD06E !important;
+    }
+
+    .bg-tosca-dark {
+        background-color: #2CD06E !important;
+    }
+
+    /* Tabel dengan border lembut */
+    .dataTable {
+        border-radius: 12px;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    /* Header tabel */
+    .dataTable thead {
+        background-color: #40E0D0;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    /* Efek hover pada baris */
+    .dataTable tbody tr:hover {
+        background-color: rgba(64, 224, 208, 0.1);
+    }
+
+    /* Padding yang lebih nyaman untuk mobile */
+    <blade media|%20(max-width%3A%20768px)%20%7B>.dataTable tbody td {
+        font-size: 13px;
+    }
+
+    .dataTable thead th {
+        font-size: 14px;
+    }
+
+    .btn-sm {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+
+    /* Gaya tombol dan badge */
+    .btn-outline-info {
+        border-color: #008080;
+        color: #008080;
+        transition: 0.3s ease;
+    }
+
+    .btn-outline-info:hover {
+        background-color: #008080;
+        color: white;
+    }
+
+    .badge {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    .img-thumbnail {
+        width: 80px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    div#reportTable_paginate ul.pagination {
+        display: flex;
+    }
+
+</style>
 
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />

@@ -60,10 +60,14 @@
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td>
+                                       <div class="reportavatar">
+                                       <img src="{{ $report->user->profile_picture }}">
                                         <a href="{{ route('users.show', $report->user_id) }}"
                                             class="text-decoration-none text-dark fw-semibold">
+                                            
                                             {{ $report->user->name }}
                                         </a>
+                                        </div>
                                     </td>
                                     <td>{{ Str::limit($report->description, 50) }}</td>
                                     <td class="text-center">
