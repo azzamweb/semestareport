@@ -92,6 +92,7 @@ public function create()
     {
         $report = Report::findOrFail($id);
         
+        
     
         return view('reports.show', compact('report'));
     }

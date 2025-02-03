@@ -560,10 +560,11 @@
                 if (!isNaN(lat) && !isNaN(lng)) {
                     var marker = L.marker([lat, lng]).addTo(map)
                         .bindPopup(`
+                         <img style="width : 50px;"src="${report.user.profile_picture}"><br>
                         <b>${report.description}</b><br>
-                        Latitude: ${lat}<br>
-                        Longitude: ${lng}<br>
-                        <a href="https://www.google.com/maps?q=${lat},${lng}" target="_blank">Lihat di Google Maps</a>
+                       
+                       
+                        <a href="{{ url('/reports') }}/${report.id}" target="_blank">Lihat Detail</a>
                     `);
                     markers.addLayer(marker); // Tambahkan marker ke dalam grup
                 }
