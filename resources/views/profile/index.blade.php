@@ -188,17 +188,24 @@
 
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css">
+
 <!-- Leaflet JS -->
 
 
 <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.js"></script>
+
 
 
 
 
 <script>
     // Inisialisasi Peta dengan Lokasi Default (Bengkalis)
-    var map = L.map('map').setView([1.4918150765026617, 102.16438994817425], 10);
+    var map = L.map('map', {
+            gestureHandling: true // Mengaktifkan gesture handling
+        }).setView([1.4918150765026617, 102.16438994817425], 10); 
+
 
     // Tambahkan Tile Layer dari OpenStreetMap
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
