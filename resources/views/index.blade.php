@@ -61,7 +61,12 @@
                                     <td class="text-center">{{ $index + 1 }}</td>
                                     <td>
                                        <div class="reportavatar">
-                                       <img src="{{ $report->user->profile_picture }}">
+                                       <a href="{{ route('users.show', $report->user_id) }}"
+                                            class="text-decoration-none text-dark fw-semibold">
+                                            
+                                            <img src="{{ $report->user->profile_picture }}">
+                                        </a>
+                                       
                                         <a href="{{ route('users.show', $report->user_id) }}"
                                             class="text-decoration-none text-dark fw-semibold">
                                             
@@ -231,9 +236,11 @@
                         <div class="team-image">
 
                             @if(!empty($topUser->profile_picture))
-                                <img src="{{ $topUser->profile_picture }}">
+                                
+                                <a href="{{ route('users.show', $topUser->id) }}"><img src="{{ $topUser->profile_picture }}"></a>
                             @else
-                                <img src="{{ asset('assets/images/profile-pic.jpg') }}">
+                            <a href="{{ route('users.show', $topUser->id) }}"><img src="{{ asset('assets/images/profile-pic.jpg') }}"></a>
+                                
                             @endif
                             <!-- <img src="{{ $topUser->profile_picture }} ? asset('storage/' . $topUser->profile_picture : asset('/images/profile-pic.jpg') }}"
                                 alt="{{ $topUser->name }}"> -->

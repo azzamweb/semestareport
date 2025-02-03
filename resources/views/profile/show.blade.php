@@ -30,8 +30,8 @@
             <div class="card shadow-lg border-0 rounded-lg">
 
                 <div class="card-body">
-                    <h3 class="fw-bold text-center mb-4 text-primary">Laporan Terbaru
-                        {{ $user->name ?? 'Tidak diketahui' }}</h3>
+                    <h5 class="fw-bold text-center mb-1">Laporan Terbaru
+                        {{ $user->name ?? 'Tidak diketahui' }}</h5>
                     @if($reports->isEmpty())
                         <p class="text-muted text-center">Belum ada laporan yang diunggah.</p>
                     @else
