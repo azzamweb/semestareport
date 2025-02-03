@@ -540,7 +540,7 @@
     document.addEventListener("DOMContentLoaded", function () {
         var map = L.map('map', {
             gestureHandling: true // Mengaktifkan gesture handling
-        }).setView([-6.2088, 106.8456], 12); // Default ke Jakarta
+        }).setView([1.4918150765026617, 102.16438994817425], 10); 
 
         // Tambahkan tile layer dari OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {

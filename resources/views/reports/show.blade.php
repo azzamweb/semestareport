@@ -4,35 +4,59 @@
 
 @section('content')
 
-<div class="spacer">
-    
-</div>
-<div class="container">
-    <h2 class="text-center text-tosca-dark mb-4">Detail Laporan</h2>
+<div class="container py-5">
+    <h2 class="text-center text-tosca-dark mb-4 fw-bold">Detail Laporan</h2>
 
-    <div class="row mb-4">
+    <div class="row g-4">
         <!-- Kolom Kiri: Gambar -->
         <div class="col-md-6">
-            <div class="card shadow">
+            <div class="card shadow-lg border-0">
                 <div class="card-body text-center">
-                    <strong>Foto Laporan</strong><br>
-                    <img src="{{ asset('storage/' . $report->photo) }}" alt="Foto Sampah" class="img-fluid rounded mt-3">
+                    <h5 class="fw-semibold">Foto Laporan</h5>
+                    <img src="{{ asset('storage/' . $report->photo) }}" 
+                         alt="Foto Sampah" 
+                         class="img-fluid rounded mt-3 shadow-sm" 
+                         style="max-height: 350px; object-fit: cover;">
                 </div>
             </div>
         </div>
 
         <!-- Kolom Kanan: Keterangan -->
         <div class="col-md-6">
-            <div class="card shadow">
+            <div class="card shadow-lg border-0">
                 <div class="card-body">
-                    <h5>Keterangan Laporan</h5>
-                    <p><strong>Nama Pelapor:</strong> {{ $report->user->name }}</p>
+                    <h5 class="fw-semibold mb-3">Keterangan Laporan</h5>
+                    
+                    <!-- Foto Pelapor -->
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{{ $report->user->profile_picture ?? asset('default-avatar.png') }}" 
+                             alt="Foto Pelapor" 
+                             class="rounded-circle shadow-sm border" 
+                             width="80" 
+                             height="80">
+                        <div class="ms-3">
+                            <h6 class="mb-0">
+                                <a href="{{ route('users.show', $report->user_id) }}" class="text-decoration-none text-dark fw-semibold">
+                                    {{ $report->user->name }}
+                                </a>
+                            </h6>
+                            <small class="text-muted">Pelapor</small>
+                        </div>
+                    </div>
+
                     <p><strong>Deskripsi:</strong> {{ $report->description }}</p>
-                    <p><strong>Status:</strong> {{ ucfirst($report->status) }}</p>
+                    <p><strong>Status:</strong> 
+                        <span class="badge bg-{{ $report->status == 'selesai' ? 'success' : 'warning' }}">
+                            {{ ucfirst($report->status) }}
+                        </span>
+                    </p>
+
                     @if ($report->latitude && $report->longitude)
                         <p>
                             <strong>Lokasi:</strong>
-                            <a href="https://www.google.com/maps?q={{ $report->latitude }},{{ $report->longitude }}" target="_blank">
+                            <a href="https://www.google.com/maps?q={{ $report->latitude }},{{ $report->longitude }}" 
+                               target="_blank" 
+                               class="text-decoration-none fw-bold text-primary">
                                 Buka di Google Maps
                             </a>
                         </p>
@@ -46,53 +70,54 @@
 
     <!-- Peta Lokasi -->
     @if ($report->latitude && $report->longitude)
-        <div class="card shadow">
-            <div class="card-header bg-tosca text-white">
-                Lokasi Laporan
-            </div>
-            <div class="card-body">
-                <div id="map" style="height: 400px; border: 1px solid #ccc;"></div>
-            </div>
+    <div class="card shadow-lg border-0 mt-4">
+        <div class="card-header bg-tosca text-white fw-bold">
+            Lokasi Laporan
         </div>
+        <div class="card-body">
+            <div id="map" style="height: 400px; border-radius: 8px; overflow: hidden;"></div>
+        </div>
+    </div>
     @endif
-</div>
-
-<div class="spacer">
-    
 </div>
 
 <!-- Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.css">
+
 <!-- Leaflet JS -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-gesture-handling/dist/leaflet-gesture-handling.min.js"></script>
 
 <script>
     @if ($report->latitude && $report->longitude)
-        // Koordinat laporan
         var latitude = {{ $report->latitude }};
         var longitude = {{ $report->longitude }};
 
-        // Inisialisasi Peta
-        var map = L.map('map').setView([latitude, longitude], 13);
+        var map = L.map('map', {
+            gestureHandling: true
+        }).setView([latitude, longitude], 14);
 
-        // Tambahkan Tile Layer dari OpenStreetMap
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            attribution: '&copy; OpenStreetMap contributors'
         }).addTo(map);
 
-        // Tambahkan Marker
-        L.marker([latitude, longitude]).addTo(map)
-            .bindPopup("<b>Lokasi Laporan</b><br>Latitude: " + latitude + "<br>Longitude: " + longitude)
-            .openPopup();
+        L.marker([latitude, longitude], {
+            title: "Lokasi Laporan",
+            riseOnHover: true
+        }).addTo(map)
+        .bindPopup("<b>Lokasi Laporan</b><br>Latitude: " + latitude + "<br>Longitude: " + longitude)
+        .openPopup();
     @endif
 </script>
 
 <style>
     .bg-tosca {
-        background-color: #40E0D0;
+        background-color: #2FD06E !important;
     }
-    .bg-tosca-dark {
-        background-color: #008080;
+    .text-tosca-dark {
+        color:rgb(255, 255, 255) !important;
     }
 </style>
+
 @endsection
