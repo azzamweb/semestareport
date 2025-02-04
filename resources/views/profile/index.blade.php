@@ -11,8 +11,17 @@
         <div class="col-lg-4">
             <div class="card shadow-lg border-0 rounded-10">
                 <div class="card-body text-center">
+
+                @if(!empty($user->profile_picture))
+                                
+                                <img style="max-width: 100px; border-radius: 50%;" src="{{ $user->profile_picture }}">
+                            @else
+                            <img style="max-width: 100px; border-radius: 50%;" src="{{ asset('assets/images/profile-pic.jpg') }}">
+                                
+                            @endif
+
                     
-                    <img src="{{ asset('storage/' . $user->profile_picture ?? 'default-profile.png') }}">
+                    
                     <h4 class="fw-bold">{{ $user->name ?? 'Tidak diketahui' }}</h4>
                     <p class="text-muted">{{ $user->email ?? 'Email tidak tersedia' }}
                     </p>

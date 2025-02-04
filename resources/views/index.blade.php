@@ -16,7 +16,9 @@
                     <p>Aplikasi pelaporan untuk dunia yang lebih baik. Laporkan masalah di sekitar Anda sekarang!
                     </p>
                     <div class="button">
-                        <a href="about-us.html" class="btn ">Lapor Sekarang!</a>
+
+                    
+                        <a href="{{ route('reports.create') }}" class="btn ">Lapor Sekarang!</a>
                     </div>
                 </div>
             </div>

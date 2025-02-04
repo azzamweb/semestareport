@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\HomeController;
 
-Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
 
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
@@ -15,7 +14,8 @@ Route::get('/users/{id}', [ProfileController::class, 'show'])->name('users.show'
 
 
 Route::middleware(['auth'])->group(function () {
-    
+    Route::get('/reports/create', [ReportController::class, 'create'])->name('reports.create');
+
     Route::post('/reports', [ReportController::class, 'store'])->name('reports.store'); 
     Route::patch('/reports/{id}', [ReportController::class, 'update'])->name('reports.update');
     Route::delete('/reports/{id}', [ReportController::class, 'destroy'])->name('reports.destroy');    
